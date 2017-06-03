@@ -21,8 +21,9 @@ def send_mail(send_to, filename):
     text = '''
     Yaaay \o/
 
-    Estamos muy contentos de tenerte con nosotros durante Django Girls. <3
-    En anexo estamos enviando el certificado de participación.
+    Estamos muy contentos de haberte tenido con nosotros durante Django Girls. <3
+    Te enviamos adjunto el certificado de participación. Pronto tendrás más noticias sobre nosotros. 
+    Si aún no lo has hecho, seguinos en las redes y unite al Grupo Django Girls Mendoza para sacarte las dudas y seguir en contacto con las personas que también han estado en alguna Django Girls.
 
     Kisses e Cupcakes,
     Equipo Django Girls Mendoza
