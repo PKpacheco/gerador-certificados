@@ -11,8 +11,8 @@ from email.mime.text import MIMEText
 
 
 def send_mail(send_to, filename):
-    send_from = ''  # email do remetente
-    password = ''  # senha do email do remetente
+    send_from = 'pkcpweb@gmail.com'  # email do remetente
+    password = 'katherine+2310'  # senha do email do remetente
 
     msg = MIMEMultipart()
     msg['From'] = send_from
@@ -21,16 +21,15 @@ def send_mail(send_to, filename):
     text = '''
     Yaaay \o/
 
-Estamos muy contentos de tenerte con nosotros durante Django Girls. <3
-     En anexo estamos enviando el certificado de participación.
+    Estamos muy contentos de tenerte con nosotros durante Django Girls. <3
+    En anexo estamos enviando el certificado de participación.
 
     Kisses e Cupcakes,
     Equipo Django Girls Mendoza
     '''
     msg.attach(MIMEText(text))
 
-    filename = '{}.pdf'.format(filename)
-
+    filename = '{}.pdf/{}.pdf'.format(filename, filename)
     with open(filename, "rb") as fil:
         part = MIMEApplication(
             fil.read(),
@@ -39,7 +38,8 @@ Estamos muy contentos de tenerte con nosotros durante Django Girls. <3
         part['Content-Disposition'] = 'attachment; filename="%s"' % basename(filename)
         msg.attach(part)
 
-    smtp = smtplib.SMTP('smtp.gmail.com', 587)
+    smtp = smtplib.SMTP('smtp.gmail.com:587')
+    smtp.ehlo()
     smtp.starttls()
     smtp.login(send_from, password)
     smtp.sendmail(send_from, send_to, msg.as_string())
@@ -60,10 +60,8 @@ def make_certificate(filename, name):
     doc.save('{}.docx'.format(name))
 
     try:
-        import pdb
-        pdb.set_trace()
         subprocess.check_call([
-            '/usr/local/bin/python3', '/usr/local/bin/unoconv', '-f',
+            'unoconv', '-f',
             'pdf', '-o', '{}.pdf'.format(name), '-d', 'document',
             '{}.docx'.format(name)])
     except subprocess.CalledProcessError as e:
@@ -76,7 +74,7 @@ def certificate(filename):
 
         for row in attendents:
             make_certificate('certificado.docx', row[0])
-            send_mail(row[1], row[0])
+            # send_mail(row[1], row[0])
 
 
 if __name__ == '__main__':
