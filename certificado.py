@@ -1,3 +1,5 @@
+# coding: utf-8
+
 import docx
 import csv
 import smtplib
@@ -9,21 +11,21 @@ from email.mime.text import MIMEText
 
 
 def send_mail(send_to, filename):
-    send_from = '' # email do remetente
-    password = '' # senha do email do remetente
+    send_from = ''  # email do remetente
+    password = ''  # senha do email do remetente
 
     msg = MIMEMultipart()
     msg['From'] = send_from
     msg['To'] = send_to
-    msg['Subject'] = '[Django Girls] Certificado de participação'
+    msg['Subject'] = '[Django Girls] Certificado de participacao'
     text = '''
     Yaaay \o/
 
-    Ficamos muito felizes em te ter conosco durante o Django Girls. <3
-    Em anexo estamos lhe enviando o certificado de participação.
+Estamos muy contentos de tenerte con nosotros durante Django Girls. <3
+     En anexo estamos enviando el certificado de participación.
 
     Kisses e Cupcakes,
-    Equipe Django Girls Florianópolis
+    Equipo Django Girls Mendoza
     '''
     msg.attach(MIMEText(text))
 
@@ -55,12 +57,13 @@ def make_certificate(filename, name):
                     inline[i].text = inline[i].text.replace('name', '')
                     inline[1].text = name + ' '
                     inline[1].bold = True
-
     doc.save('{}.docx'.format(name))
 
     try:
+        import pdb
+        pdb.set_trace()
         subprocess.check_call([
-            '/usr/bin/python3', '/usr/bin/unoconv', '-f',
+            '/usr/local/bin/python3', '/usr/local/bin/unoconv', '-f',
             'pdf', '-o', '{}.pdf'.format(name), '-d', 'document',
             '{}.docx'.format(name)])
     except subprocess.CalledProcessError as e:
