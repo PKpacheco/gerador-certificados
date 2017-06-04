@@ -11,8 +11,8 @@ from email.mime.text import MIMEText
 
 
 def send_mail(send_to, filename):
-    send_from = 'pkcpweb@gmail.com'  # email do remetente
-    password = 'katherine+2310'  # senha do email do remetente
+    send_from = ''  # email do remetente
+    password = ''  # senha do email do remetente
 
     msg = MIMEMultipart()
     msg['From'] = send_from
