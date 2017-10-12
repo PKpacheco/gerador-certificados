@@ -11,22 +11,25 @@ from email.mime.text import MIMEText
 
 
 def send_mail(send_to, filename):
-    send_from = ''  # email do remetente
-    password = ''  # senha do email do remetente
+    send_from = 'pkcpweb@gmail.com'  # email do remetente
+    password = 'Pkatherine1991'  # senha do email do remetente
 
     msg = MIMEMultipart()
     msg['From'] = send_from
     msg['To'] = send_to
-    msg['Subject'] = '[Django Girls] Certificado de participacao'
+    msg['Subject'] = 'Certificados startup weekend women'
     text = '''
-    Yaaay \o/
+    Hola!!
 
-    Estamos muy contentos de haberte tenido con nosotros durante Django Girls. <3
-    Te enviamos adjunto el certificado de participación. Pronto tendrás más noticias sobre nosotros. 
-    Si aún no lo has hecho, seguinos en las redes y unite al Grupo Django Girls Mendoza para sacarte las dudas y seguir en contacto con las personas que también han estado en alguna Django Girls.
+    Gracias por haber participado del Startup Weekend Women Mendoza.
+    Esperamos te haya sido de mucha ayuda para orientarte a la hora de comenzar con tu emprendimiento.
 
-    Kisses e Cupcakes,
-    Equipo Django Girls Mendoza
+    Te enviamos adjunto el certificado de participación. Muchas gracias por ser parte de la comunidad SartUp Weekend!!
+
+    --
+    Florencia Rosas
+    Co-organizer Startup Weekend
+
     '''
     msg.attach(MIMEText(text))
 
